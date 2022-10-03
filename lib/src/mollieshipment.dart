@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:mollie/src/mollieproduct.dart';
+import 'package:mollie_flutter/src/mollieproduct.dart';
 
 class MollieShipmentProduct {
   String? id;

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:mollie/src/mollieinvoice.dart';
+import 'package:mollie_flutter/src/mollieinvoice.dart';
 
 class InvoiceHandler {
   final String _apiEndpoint = "https://api.mollie.com/v2/invoices";

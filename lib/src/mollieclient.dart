@@ -1,8 +1,8 @@
-import 'package:mollie/internal/invoicehandler.dart';
-import 'package:mollie/internal/orderhandler.dart';
-import 'package:mollie/internal/customerhandler.dart';
-import 'package:mollie/internal/subscriptionhandler.dart';
-import 'package:mollie/internal/paymenthandler.dart';
+import 'package:mollie_flutter/internal/customerhandler.dart';
+import 'package:mollie_flutter/internal/invoicehandler.dart';
+import 'package:mollie_flutter/internal/orderhandler.dart';
+import 'package:mollie_flutter/internal/paymenthandler.dart';
+import 'package:mollie_flutter/internal/subscriptionhandler.dart';
 
 class MollieClient {
   var headers;

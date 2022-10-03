@@ -1,4 +1,5 @@
-import 'package:mollie/src/mollieinvoiceline.dart';
+import 'package:mollie_flutter/src/mollieinvoiceline.dart';
+
 import 'mollieamount.dart';
 
 class MollieInvoiceRequest {

@@ -1,23 +1,24 @@
 library molli;
 
-export 'package:mollie/src/mollieaddress.dart';
-export 'package:mollie/src/mollieorder.dart';
-export 'package:mollie/src/mollieproduct.dart';
-export 'package:mollie/src/mollieamount.dart';
-export 'package:mollie/src/molliecheckout.dart';
-export 'package:mollie/src/mollieorderstatus.dart';
-export 'package:mollie/src/molliecustomer.dart';
-export 'package:mollie/src/molliesubscription.dart';
-export 'package:mollie/src/mollieshipment.dart';
-export 'package:mollie/src/mollieorderline.dart';
-export 'package:mollie/src/molliepayment.dart';
-export 'package:mollie/src/mollieinvoice.dart';
-export 'package:mollie/src/mollieinvoiceline.dart';
-
-import 'package:mollie/src/mollieclient.dart';
-import 'package:mollie/src/mollieorder.dart';
 import 'dart:async';
+
 import 'package:flutter/services.dart';
+import 'package:mollie_flutter/src/mollieclient.dart';
+import 'package:mollie_flutter/src/mollieorder.dart';
+
+export 'package:mollie_flutter/src/mollieaddress.dart';
+export 'package:mollie_flutter/src/mollieamount.dart';
+export 'package:mollie_flutter/src/molliecheckout.dart';
+export 'package:mollie_flutter/src/molliecustomer.dart';
+export 'package:mollie_flutter/src/mollieinvoice.dart';
+export 'package:mollie_flutter/src/mollieinvoiceline.dart';
+export 'package:mollie_flutter/src/mollieorder.dart';
+export 'package:mollie_flutter/src/mollieorderline.dart';
+export 'package:mollie_flutter/src/mollieorderstatus.dart';
+export 'package:mollie_flutter/src/molliepayment.dart';
+export 'package:mollie_flutter/src/mollieproduct.dart';
+export 'package:mollie_flutter/src/mollieshipment.dart';
+export 'package:mollie_flutter/src/molliesubscription.dart';
 
 MollieClient client = new MollieClient();
 

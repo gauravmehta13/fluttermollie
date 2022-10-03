@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mollie/mollie.dart';
-import 'package:mollie/src/mollieorder.dart';
+import 'package:mollie_flutter/mollie.dart';
+import 'package:mollie_flutter/src/mollieorder.dart';
 
 class CheckoutStyle {
   Color? buttonColor;

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:mollie/src/molliecustomer.dart';
+import 'package:mollie_flutter/src/molliecustomer.dart';
 
 class CustomerHandler {
   var _headers;

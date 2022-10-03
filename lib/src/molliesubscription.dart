@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:mollie/src/mollieamount.dart';
+
+import 'package:mollie_flutter/src/mollieamount.dart';
 
 class MollieSubscriptionRequest {
   MollieAmount? amount;

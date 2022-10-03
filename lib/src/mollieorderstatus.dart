@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mollie/src/mollieorder.dart';
-import 'package:mollie/src/mollieproduct.dart';
+import 'package:mollie_flutter/src/mollieorder.dart';
+import 'package:mollie_flutter/src/mollieproduct.dart';
 
 /// Builds a list view of all orders
 class MollieOrderStatus extends StatefulWidget {
@@ -73,7 +73,8 @@ class _MollieOrderStatusState extends State<MollieOrderStatus> {
           itemBuilder: (context, index) {
             MollieOrderResponse o = widget.orders[index];
 
-            DateTime date = new DateTime.fromMillisecondsSinceEpoch(DateTime.parse(o.createdAt!).millisecondsSinceEpoch);
+            DateTime date =
+                new DateTime.fromMillisecondsSinceEpoch(DateTime.parse(o.createdAt!).millisecondsSinceEpoch);
             var formatter = new DateFormat("dd.MM.yyyy");
             String formattedDate = formatter.format(date);
 

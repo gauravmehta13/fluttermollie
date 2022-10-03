@@ -4,7 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:mollie/mollie.dart';
+import 'package:mollie_flutter/mollie.dart';
 
 void main() => runApp(
     MaterialApp(initialRoute: "home", routes: {"home": (context) => MyApp(), "done": (context) => ShowOrderStatus()}));
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   MollieOrderRequest o = new MollieOrderRequest(
       amount: MollieAmount(value: "1396.00", currency: "EUR"),
-      orderNumber: "900",
+      orderNumber: "901",
       redirectUrl: "molli://payment-return",
       locale: "de_DE",
       webhookUrl: 'http://blackboxshisha.herokuapp.com/mollie/order/status',

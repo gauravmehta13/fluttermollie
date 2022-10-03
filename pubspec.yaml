@@ -1,4 +1,4 @@
-name: mollie
+name: mollie_flutter
 description: Implement the Mollie checkout process easily into your Flutter app
 version: 1.0.0
 homepage: https://github.com/Oni22/fluttermollie

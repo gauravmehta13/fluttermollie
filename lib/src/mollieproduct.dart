@@ -1,4 +1,4 @@
-import 'package:mollie/src/mollieamount.dart';
+import 'package:mollie_flutter/src/mollieamount.dart';
 
 class MollieProductRequest {
   String? type;

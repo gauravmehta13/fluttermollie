@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:mollie/src/mollieaddress.dart';
-import 'package:mollie/src/mollieamount.dart';
-import 'package:mollie/src/mollieproduct.dart';
+import 'package:mollie_flutter/src/mollieaddress.dart';
+import 'package:mollie_flutter/src/mollieamount.dart';
+import 'package:mollie_flutter/src/mollieproduct.dart';
 
 class MollieOrderRequest {
   MollieAmount? amount;

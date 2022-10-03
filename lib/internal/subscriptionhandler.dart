@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:mollie/src/molliesubscription.dart';
+import 'package:mollie_flutter/src/molliesubscription.dart';
 
 /// TODO: https://stackoverflow.com/questions/52073350/php-mollie-payments-recurring-billing
 

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:mollie/src/mollieaddress.dart';
-import 'package:mollie/src/mollieorder.dart';
-import 'package:mollie/src/mollieorderline.dart';
+import 'package:mollie_flutter/src/mollieaddress.dart';
+import 'package:mollie_flutter/src/mollieorder.dart';
+import 'package:mollie_flutter/src/mollieorderline.dart';
 
 class OrderHandler {
   final String _apiEndpoint = "https://api.mollie.com/v2/orders";
