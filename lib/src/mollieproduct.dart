@@ -1,17 +1,17 @@
 import 'package:mollie/src/mollieamount.dart';
 
 class MollieProductRequest {
-  String type;
-  String sku;
-  String name;
-  String productUrl;
-  String imageUrl;
-  int quantity;
-  String vatRate;
-  MollieAmount unitPrice;
-  MollieAmount totalAmount;
-  MollieAmount discountAmount;
-  MollieAmount vatAmount;
+  String? type;
+  String? sku;
+  String? name;
+  String? productUrl;
+  String? imageUrl;
+  int? quantity;
+  String? vatRate;
+  MollieAmount? unitPrice;
+  MollieAmount? totalAmount;
+  MollieAmount? discountAmount;
+  MollieAmount? vatAmount;
 
   MollieProductRequest(
       {this.type,
@@ -35,28 +35,28 @@ class MollieProductRequest {
       "imageUrl": imageUrl,
       "quantity": quantity,
       "vatRate": vatRate,
-      "unitPrice": unitPrice.toMap(),
-      "totalAmount": totalAmount.toMap(),
-      "discountAmount": discountAmount.toMap(),
-      "vatAmount": vatAmount.toMap(),
+      "unitPrice": unitPrice!.toMap(),
+      "totalAmount": totalAmount!.toMap(),
+      "discountAmount": discountAmount!.toMap(),
+      "vatAmount": vatAmount!.toMap(),
     };
   }
 }
 
 class MollieProductResponse {
-  String id;
-  String orderId;
-  String type;
-  String sku;
-  String name;
-  String productUrl;
-  String imageUrl;
-  int quantity;
-  String vatRate;
-  MollieAmount unitPrice;
-  MollieAmount totalAmount;
-  MollieAmount discountAmount;
-  MollieAmount vatAmount;
+  String? id;
+  String? orderId;
+  String? type;
+  String? sku;
+  String? name;
+  String? productUrl;
+  String? imageUrl;
+  int? quantity;
+  String? vatRate;
+  MollieAmount? unitPrice;
+  MollieAmount? totalAmount;
+  MollieAmount? discountAmount;
+  MollieAmount? vatAmount;
 
   MollieProductResponse.build(dynamic data) {
     id = data["id"];

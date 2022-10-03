@@ -68,9 +68,9 @@ class OrderHandler {
   /// This endpoint can be used to update the billing and/or shipping address of an order.
   Future<MollieOrderResponse> update(
       String orderId, MollieAddress billingAddress, MollieAddress shippingAddress) async {
-    Map data;
+    Map? data;
 
-    if (billingAddress != null && shippingAddress != null) {
+    if (shippingAddress != null) {
       data = {"billingAddress": billingAddress.toMap(), "shippingAddress": shippingAddress.toMap()};
     } else if (billingAddress == null) {
       data = {"shippingAddress": shippingAddress.toMap()};
@@ -91,7 +91,7 @@ class OrderHandler {
   Future<MollieOrderResponse> updateOrderLine(MollieOrderLine orderLine) async {
     var res = await http.patch(
         Uri.parse(
-          _apiEndpoint + "/" + orderLine.orderId + "/lines/" + orderLine.orderLineId,
+          _apiEndpoint + "/" + orderLine.orderId! + "/lines/" + orderLine.orderLineId!,
         ),
         headers: _headers,
         body: orderLine.toJson());

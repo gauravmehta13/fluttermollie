@@ -1,12 +1,12 @@
 class MollieDetails {
-  final String bankName;
-  final String bankAccount;
-  final String bankBic;
-  final String transferReference;
-  final String consumerName;
-  final String consumerAccount;
-  final String consumerBic;
-  final String billingEmail;
+  final String? bankName;
+  final String? bankAccount;
+  final String? bankBic;
+  final String? transferReference;
+  final String? consumerName;
+  final String? consumerAccount;
+  final String? consumerBic;
+  final String? billingEmail;
 
   MollieDetails({
     this.bankName,

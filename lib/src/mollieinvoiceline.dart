@@ -1,11 +1,11 @@
 import 'mollieamount.dart';
 
 class MollieInvoiceLineRequest {
-  String period;
-  String description;
-  int count;
-  int vatPercentage;
-  MollieAmount amount;
+  String? period;
+  String? description;
+  int? count;
+  int? vatPercentage;
+  MollieAmount? amount;
 
   MollieInvoiceLineRequest({
     this.amount,

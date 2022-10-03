@@ -7,11 +7,11 @@ import 'package:mollie/internal/paymenthandler.dart';
 class MollieClient {
   var headers;
 
-  OrderHandler orders;
-  CustomerHandler customers;
-  SubscriptionHandler subscription;
-  PaymentHandler payments;
-  InvoiceHandler invoiceHandler;
+  OrderHandler? orders;
+  CustomerHandler? customers;
+  SubscriptionHandler? subscription;
+  PaymentHandler? payments;
+  InvoiceHandler? invoiceHandler;
 
   static final MollieClient _instance = MollieClient._internal();
 

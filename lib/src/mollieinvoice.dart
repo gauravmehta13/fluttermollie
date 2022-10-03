@@ -2,26 +2,26 @@ import 'package:mollie/src/mollieinvoiceline.dart';
 import 'mollieamount.dart';
 
 class MollieInvoiceRequest {
-  String id;
+  String? id;
   MollieInvoiceRequest({this.id});
 }
 
 class MollieInvoiceResponse {
-  String resource;
-  String id;
-  String reference;
-  String vatNumber;
-  String status;
-  String issuedAt;
-  String paidAt;
-  String dueAt;
-  MollieAmount netAmount;
-  MollieAmount vatAmount;
-  MollieAmount grossAmount;
+  String? resource;
+  String? id;
+  String? reference;
+  String? vatNumber;
+  String? status;
+  String? issuedAt;
+  String? paidAt;
+  String? dueAt;
+  MollieAmount? netAmount;
+  MollieAmount? vatAmount;
+  MollieAmount? grossAmount;
   List<MollieInvoiceLineRequest> lines = [];
-  String linksSelf;
-  String linksPdf;
-  String pdfExpiresAt;
+  String? linksSelf;
+  String? linksPdf;
+  String? pdfExpiresAt;
 
   MollieInvoiceResponse.build(dynamic data) {
     resource = data["resource"];

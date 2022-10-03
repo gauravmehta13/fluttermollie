@@ -2,17 +2,17 @@ import 'dart:convert';
 import 'package:mollie/src/mollieamount.dart';
 
 class MollieSubscriptionRequest {
-  MollieAmount amount;
-  int times;
-  String interval;
-  String description;
-  String webhookUrl;
+  MollieAmount? amount;
+  int? times;
+  String? interval;
+  String? description;
+  String? webhookUrl;
 
   MollieSubscriptionRequest({this.amount, this.interval, this.description, this.webhookUrl, this.times});
 
   String toJson() {
     return json.encode({
-      "amount": amount.toMap(),
+      "amount": amount!.toMap(),
       "times": times,
       "interval": interval,
       "description": description,
@@ -22,24 +22,24 @@ class MollieSubscriptionRequest {
 }
 
 class MollieSubscriptionResponse {
-  String id;
-  String mode;
-  String createdAt;
-  String status;
-  MollieAmount amount;
-  String value;
-  int times;
-  int timesRemaining;
-  String interval;
-  String description;
-  String startDate;
-  String nextPaymentDate;
-  String method;
-  String webhookUrl;
-  String customerUrl;
-  String documentationUrl;
-  String profileUrl;
-  String selfUrl;
+  String? id;
+  String? mode;
+  String? createdAt;
+  String? status;
+  MollieAmount? amount;
+  String? value;
+  int? times;
+  int? timesRemaining;
+  String? interval;
+  String? description;
+  String? startDate;
+  String? nextPaymentDate;
+  String? method;
+  String? webhookUrl;
+  String? customerUrl;
+  String? documentationUrl;
+  String? profileUrl;
+  String? selfUrl;
 
   MollieSubscriptionResponse.build(dynamic data) {
     id = data["id"];

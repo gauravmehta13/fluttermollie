@@ -4,17 +4,17 @@ import 'package:mollie/src/mollieamount.dart';
 import 'package:mollie/src/molliedetails.dart';
 
 class MolliePaymentRequest {
-  MollieAmount amount;
-  String description;
-  String webhookUrl;
-  String redirectUrl;
+  MollieAmount? amount;
+  String? description;
+  String? webhookUrl;
+  String? redirectUrl;
   dynamic metaData;
 
   MolliePaymentRequest({this.amount, this.redirectUrl, this.description, this.webhookUrl, this.metaData});
 
   String toJson() {
     return json.encode({
-      "amount": amount.toMap(),
+      "amount": amount!.toMap(),
       "redirectUrl": redirectUrl,
       "metadata": json.encode(metaData),
       "description": description,
@@ -24,24 +24,24 @@ class MolliePaymentRequest {
 }
 
 class MolliePaymentResponse {
-  String id;
-  String mode;
-  String createdAt;
-  String status;
-  MollieAmount amount;
-  bool isCancelable;
-  String sequenceType;
-  MollieDetails details;
-  String profileId;
-  String description;
-  String method;
+  String? id;
+  String? mode;
+  String? createdAt;
+  String? status;
+  MollieAmount? amount;
+  bool? isCancelable;
+  String? sequenceType;
+  MollieDetails? details;
+  String? profileId;
+  String? description;
+  String? method;
   dynamic metaData;
-  String webhookUrl;
-  String customerUrl;
-  String redirectUrl;
-  String checkoutUrl;
-  String documentationUrl;
-  String selfUrl;
+  String? webhookUrl;
+  String? customerUrl;
+  String? redirectUrl;
+  String? checkoutUrl;
+  String? documentationUrl;
+  String? selfUrl;
 
   MolliePaymentResponse.build(dynamic data) {
     id = data["id"];

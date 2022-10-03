@@ -1,15 +1,15 @@
 class MollieAddress {
-  String organizationName;
-  String streetAndNumber;
-  String city;
-  String region;
-  String postalCode;
-  String country;
-  String title;
-  String givenName;
-  String familyName;
-  String email;
-  String phone;
+  String? organizationName;
+  String? streetAndNumber;
+  String? city;
+  String? region;
+  String? postalCode;
+  String? country;
+  String? title;
+  String? givenName;
+  String? familyName;
+  String? email;
+  String? phone;
 
   MollieAddress(
       {this.organizationName,

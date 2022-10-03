@@ -3,9 +3,9 @@ import 'package:mollie/mollie.dart';
 import 'package:mollie/src/mollieorder.dart';
 
 class CheckoutStyle {
-  Color buttonColor;
-  TextStyle textStyle;
-  AppBar appBar;
+  Color? buttonColor;
+  TextStyle? textStyle;
+  AppBar? appBar;
 
   CheckoutStyle({this.textStyle, this.buttonColor, this.appBar});
 }
@@ -17,12 +17,12 @@ class MollieCheckout extends StatefulWidget {
   final bool usePaypal;
   final bool useIdeal;
   final bool useApplePay;
-  final CheckoutStyle style;
+  final CheckoutStyle? style;
   final MollieOrderRequest order;
-  final Function(MollieOrderRequest) onMethodSelected;
+  final Function(MollieOrderRequest)? onMethodSelected;
 
   MollieCheckout(
-      {@required this.order,
+      {required this.order,
       this.style,
       this.onMethodSelected,
       this.useCredit = true,
@@ -38,11 +38,11 @@ class MollieCheckout extends StatefulWidget {
 
 class _MollieCheckoutState extends State<MollieCheckout> {
   List<Widget> paymentMethods = [];
-  CheckoutStyle style;
+  CheckoutStyle? style;
 
-  void _setMethod(String method) {
+  void _setMethod(String? method) {
     widget.order.method = method;
-    widget.onMethodSelected(widget.order);
+    widget.onMethodSelected!(widget.order);
   }
 
   void _buildPaymentMethods() {
@@ -103,7 +103,7 @@ class _MollieCheckoutState extends State<MollieCheckout> {
             padding: const EdgeInsets.all(5),
             child: TextButton(
                 style: TextButton.styleFrom(
-                  backgroundColor: style.buttonColor,
+                  backgroundColor: style!.buttonColor,
                 ),
                 onPressed: () {
                   _setMethod(m["method"]);
@@ -121,7 +121,7 @@ class _MollieCheckoutState extends State<MollieCheckout> {
                             alignment: Alignment.center,
                             child: Text(
                               m["name"],
-                              style: style.textStyle,
+                              style: style!.textStyle,
                             ))),
                   ],
                 ))));
@@ -138,7 +138,7 @@ class _MollieCheckoutState extends State<MollieCheckout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: style.appBar,
+        appBar: style!.appBar,
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[

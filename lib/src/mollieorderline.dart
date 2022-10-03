@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 class MollieOrderLine {
-  String orderId;
-  String orderLineId;
-  String name;
-  String productUrl;
-  String imageUrl;
+  String? orderId;
+  String? orderLineId;
+  String? name;
+  String? productUrl;
+  String? imageUrl;
 
   MollieOrderLine({this.orderId, this.orderLineId, this.name, this.imageUrl, this.productUrl});
 

@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:mollie/src/mollieproduct.dart';
 
 class MollieShipmentProduct {
-  String id;
-  int quantity;
+  String? id;
+  int? quantity;
 
   MollieShipmentProduct({this.id, this.quantity});
 
@@ -14,16 +14,16 @@ class MollieShipmentProduct {
 }
 
 class MollieShipmentRequest {
-  String orderId;
-  List<MollieShipmentProduct> products;
-  String carrier;
-  String trackingCode;
-  String url;
+  String? orderId;
+  List<MollieShipmentProduct>? products;
+  String? carrier;
+  String? trackingCode;
+  String? url;
 
   MollieShipmentRequest({this.orderId, this.carrier, this.products, this.trackingCode, this.url});
 
   String toJson() {
-    dynamic mappedProducts = products.map((p) => p.toMap()).toList();
+    dynamic mappedProducts = products!.map((p) => p.toMap()).toList();
 
     return json.encode({
       "orderId": orderId,
@@ -34,16 +34,16 @@ class MollieShipmentRequest {
 }
 
 class MollieShipmentResponse {
-  String id;
-  String orderId;
-  String createdAt;
-  String trackingCode;
-  String carrier;
-  String url;
-  List<MollieProductResponse> products;
-  String orderUrl;
-  String selfUrl;
-  String documentationUrl;
+  String? id;
+  String? orderId;
+  String? createdAt;
+  String? trackingCode;
+  String? carrier;
+  String? url;
+  late List<MollieProductResponse> products;
+  String? orderUrl;
+  String? selfUrl;
+  String? documentationUrl;
 
   MollieShipmentResponse.build(dynamic data) {
     id = data["id"];

@@ -1,15 +1,15 @@
 import 'dart:convert';
 
 class MollieCustomer {
-  String id;
-  String mode;
-  String name;
-  String email;
-  String locale;
+  String? id;
+  String? mode;
+  String? name;
+  String? email;
+  String? locale;
   dynamic metaData;
-  String createdAt;
-  String selfUrl;
-  String documentationUrl;
+  String? createdAt;
+  String? selfUrl;
+  String? documentationUrl;
 
   MollieCustomer(
       {this.id,
