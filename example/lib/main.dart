@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -145,6 +146,7 @@ class _MyAppState extends State<MyApp> {
     print(data);
     if (data["name"] != "ApiError") {
       MollieOrderResponse res = MollieOrderResponse.build(data);
+      log(res.checkoutUrl);
       Mollie.setCurrentOrder(res);
       Mollie.startPayment(res.checkoutUrl);
     } else {
@@ -222,6 +224,10 @@ class ShowOrderStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return MollieOrderStatus(
       orders: [Mollie.getCurrentOrder()],
+      onSelectOrder: (order) {
+        print(order.amount.currency);
+        print(order.status);
+      },
     );
   }
 }

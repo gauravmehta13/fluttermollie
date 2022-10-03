@@ -32,7 +32,9 @@ public class MolliePlugin implements FlutterPlugin, MethodCallHandler {
 
     void startPayment(String checkoutUrl) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(checkoutUrl));
+        browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(browserIntent);
+        
     }
 
     @Override
