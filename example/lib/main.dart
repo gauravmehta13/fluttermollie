@@ -156,6 +156,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    return MollieCheckout(
+      order: o,
+      onMethodSelected: (order) {
+        createOrder(order);
+      },
+      useCredit: true,
+      usePaypal: true,
+      useApplePay: true,
+      useSofort: true,
+      useSepa: true,
+      useIdeal: true,
+    );
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -199,18 +212,6 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
-    /*MollieCheckout(
-      order: o,
-      onMethodSelected: (order) {
-        createOrder(order);
-      },
-      useCredit: true,
-      usePaypal: true,
-      useApplePay: true,
-      useSofort: true,
-      useSepa: true,
-      useIdeal: true,
-    );*/
   }
 
   void listPayments() async {

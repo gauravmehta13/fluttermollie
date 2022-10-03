@@ -42,7 +42,7 @@ class _MollieCheckoutState extends State<MollieCheckout> {
 
   void _setMethod(String? method) {
     widget.order.method = method;
-    widget.onMethodSelected!(widget.order);
+    widget.onMethodSelected?.call(widget.order);
   }
 
   void _buildPaymentMethods() {
