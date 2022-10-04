@@ -41,16 +41,16 @@ class MollieAddress {
   }
 
   MollieAddress.build(dynamic data) {
-    organizationName = data["organizationName"];
-    streetAndNumber = data["streetAndNumber"];
-    city = data["city"];
-    region = data["region"];
-    postalCode = data["postalCode"];
-    country = data["country"];
-    title = data["title"];
-    givenName = data["givenName"];
-    familyName = data["familyName"];
-    email = data["email"];
-    phone = data["phone"];
+    organizationName = data?["organizationName"];
+    streetAndNumber = data?["streetAndNumber"];
+    city = data?["city"];
+    region = data?["region"];
+    postalCode = data?["postalCode"];
+    country = data?["country"];
+    title = data?["title"];
+    givenName = data?["givenName"];
+    familyName = data?["familyName"];
+    email = data?["email"];
+    phone = data?["phone"];
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:mollie_flutter/src/mollieaddress.dart';
 import 'package:mollie_flutter/src/mollieamount.dart';
@@ -73,9 +74,10 @@ class MollieOrderResponse {
   String? mode;
 
   MollieOrderResponse.build(dynamic data) {
+    log(data.toString());
     id = data["id"];
 
-    amount = MollieAmount(currency: data["amount"]["currency"], value: data["amount"]["value"]);
+    amount = MollieAmount(currency: data["amount"]?["currency"], value: data["amount"]?["value"]);
 
     shippingAddress = MollieAddress.build(data["shippingAddress"]);
     billingAddress = MollieAddress.build(data["billingAddress"]);

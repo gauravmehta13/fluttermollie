@@ -1,3 +1,10 @@
+## 1.0.2
+* Added `MollieCheckoutOptions`
+* Added Example for more payment methods
+## 1.0.1
+
+* Fixed Native Android issue
+* Migrated to Null Safety
 ## 0.8.1
 
 * Added support for Payment API calls via client

@@ -19,11 +19,13 @@ class MollieCheckout extends StatefulWidget {
   final bool useApplePay;
   final CheckoutStyle? style;
   final MollieOrderRequest order;
+  final Widget? child;
   final Function(MollieOrderRequest)? onMethodSelected;
 
   MollieCheckout(
       {required this.order,
       this.style,
+      this.child,
       this.onMethodSelected,
       this.useCredit = true,
       this.usePaypal = true,
@@ -112,7 +114,7 @@ class _MollieCheckoutState extends State<MollieCheckout> {
                   children: <Widget>[
                     Image.asset(
                       m["icon"],
-                      package: "mollie",
+                      package: "mollie_flutter",
                       width: 40,
                       height: 40,
                     ),
@@ -146,7 +148,8 @@ class _MollieCheckoutState extends State<MollieCheckout> {
               Container(
                   child: Column(
                 children: paymentMethods,
-              ))
+              )),
+              if (widget.child != null) widget.child!
             ],
           ),
         ));

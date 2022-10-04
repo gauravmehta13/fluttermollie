@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:mollie_flutter/src/mollieclient.dart';
 import 'package:mollie_flutter/src/mollieorder.dart';
 
+export 'package:mollie_flutter/src/mollie_checkout_options.dart';
 export 'package:mollie_flutter/src/mollieaddress.dart';
 export 'package:mollie_flutter/src/mollieamount.dart';
 export 'package:mollie_flutter/src/molliecheckout.dart';
@@ -23,13 +24,6 @@ export 'package:mollie_flutter/src/molliesubscription.dart';
 MollieClient client = new MollieClient();
 
 class Mollie {
-  final klarnaPayNow = "sofort";
-  final creditCard = "creditcard";
-  final payPal = "paypal";
-  final sepa = "branktransfer";
-  final applePay = "applePay";
-  final ideal = "ideal";
-
   static const MethodChannel _channel = const MethodChannel('mollie');
 
   /// Opens the browser to process the payment. Returns after payment is done.

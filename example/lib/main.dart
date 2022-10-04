@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:mollie_flutter/mollie.dart';
 
 void main() => runApp(
@@ -133,25 +131,33 @@ class _MyAppState extends State<MyApp> {
     );
 
     // client-server example
-    var orderResponse = await http.post(
-      Uri.parse(
-        "http://blackboxshisha.herokuapp.com/mollie/create/order",
-      ),
-      headers: {"Content-Type": "application/json"},
-      body: order.toJson(),
-    );
+    // var orderResponse = await http.post(
+    //   Uri.parse(
+    //     "http://blackboxshisha.herokuapp.com/mollie/create/order",
+    //   ),
+    //   headers: {"Content-Type": "application/json"},
+    //   body: order.toJson(),
+    // );
+    // var data = jsonDecode(orderResponse.body);
+    // print("RECEIVED DATA FROM BACKEND");
+    // print(data);
+    // if (data["name"] != "ApiError") {
+    //   MollieOrderResponse res = MollieOrderResponse.build(data);
+    //   log(res.checkoutUrl);
+    //   Mollie.setCurrentOrder(res);
+    //   Mollie.startPayment(res.checkoutUrl);
+    // } else {
+    //   print("FAILED RESPONSE: ${data["title"]}");
+    // }
 
-    var data = jsonDecode(orderResponse.body);
-    print("RECEIVED DATA FROM BACKEND");
-    print(data);
-    if (data["name"] != "ApiError") {
-      MollieOrderResponse res = MollieOrderResponse.build(data);
-      log(res.checkoutUrl);
-      Mollie.setCurrentOrder(res);
-      Mollie.startPayment(res.checkoutUrl);
-    } else {
-      print("FAILED RESPONSE: ${data["title"]}");
-    }
+    //only client example
+
+    client.init("test_HbkjP7PuCPwdveGWG2UffGTdkmd8re");
+
+    var createdOrder = await client.orders.create(order);
+    log(createdOrder.checkoutUrl);
+    Mollie.setCurrentOrder(createdOrder);
+    Mollie.startPayment(createdOrder.checkoutUrl);
   }
 
   @override
@@ -167,6 +173,15 @@ class _MyAppState extends State<MyApp> {
       useSofort: true,
       useSepa: true,
       useIdeal: true,
+      child: MollieCheckoutOptions(
+        order: o,
+        style: CheckoutStyle(
+          buttonColor: Colors.white,
+        ),
+        onMethodSelected: (order) {
+          createOrder(order);
+        },
+      ),
     );
 
     return Scaffold(

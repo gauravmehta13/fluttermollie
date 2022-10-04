@@ -17,10 +17,14 @@ class OrderHandler {
   /// Creating an order will automatically create the required payment to allow your customer to pay for the order.
   /// Once you have created an order, you should redirect your customer to the URL in the _links.checkout property from the response.
   /// Note that when the payment fails, expires or is canceled, you can create a new payment using the Create order payment API. This is only possible for orders that have a created status.
-  Future<MollieOrderResponse> create(MollieOrderRequest order) async {
+  Future<MollieOrderResponse?> create(MollieOrderRequest order) async {
     var res = await http.post(Uri.parse(_apiEndpoint), headers: _headers, body: order.toJson());
+    if (res.statusCode == 200 || res.statusCode == 201) {
+      dynamic data = json.decode(res.body);
+      return MollieOrderResponse.build(data);
+    }
 
-    return MollieOrderResponse.build(json.decode(res.body));
+    throw Exception("Error creating order ${res.statusCode} ${res.body}");
   }
 
   /// List all orders
