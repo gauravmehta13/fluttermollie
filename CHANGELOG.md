@@ -1,3 +1,5 @@
+## 1.0.3
+* ListTile dense -> `MollieCheckoutOptions`
 ## 1.0.2
 * Added `MollieCheckoutOptions`
 * Added Example for more payment methods

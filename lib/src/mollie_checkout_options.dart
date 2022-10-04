@@ -71,6 +71,7 @@ class _MollieCheckoutOptionsState extends State<MollieCheckoutOptions> {
       paymentMethods.add(Padding(
         padding: const EdgeInsets.symmetric(vertical: 6),
         child: ListTile(
+            dense: true,
             tileColor: style?.buttonColor,
             leading: m.icon != null
                 ? Image.asset(
