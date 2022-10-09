@@ -1,3 +1,5 @@
+## 1.1
+* Added `flutter_lints`
 ## 1.0.3
 * ListTile dense -> `MollieCheckoutOptions`
 ## 1.0.2
