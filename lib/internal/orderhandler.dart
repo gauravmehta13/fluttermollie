@@ -8,9 +8,9 @@ import 'package:mollie_flutter/src/mollieorderline.dart';
 class OrderHandler {
   final String _apiEndpoint = "https://api.mollie.com/v2/orders";
 
-  dynamic _headers;
+  Map<String, String>? _headers;
 
-  OrderHandler(dynamic headers) {
+  OrderHandler(Map<String, String>? headers) {
     _headers = headers;
   }
 
@@ -48,15 +48,18 @@ class OrderHandler {
   }
 
   /// Retrieve a single order by its ID.
-  Future<MollieOrderResponse> get(String orderId) async {
+  Future<MollieOrderResponse?> get(String orderId) async {
     var res = await http.get(
       Uri.parse(_apiEndpoint + "/" + orderId),
       headers: _headers,
     );
 
-    MollieOrderResponse o = MollieOrderResponse.build(json.decode(res.body));
-
-    return o;
+    if (res.statusCode == 200 || res.statusCode == 201) {
+      dynamic data = json.decode(res.body);
+      return MollieOrderResponse.build(data);
+    } else {
+      throw Exception("Error getting order ${res.statusCode} ${res.body}");
+    }
   }
 
   /// Cancels an order
@@ -72,17 +75,7 @@ class OrderHandler {
   /// This endpoint can be used to update the billing and/or shipping address of an order.
   Future<MollieOrderResponse> update(
       String orderId, MollieAddress billingAddress, MollieAddress shippingAddress) async {
-    Map? data;
-
-    if (shippingAddress != null) {
-      data = {"billingAddress": billingAddress.toMap(), "shippingAddress": shippingAddress.toMap()};
-    } else if (billingAddress == null) {
-      data = {"shippingAddress": shippingAddress.toMap()};
-    } else if (shippingAddress == null) {
-      data = {
-        "billingAddress": billingAddress.toMap(),
-      };
-    }
+    Map data = {"billingAddress": billingAddress.toMap(), "shippingAddress": shippingAddress.toMap()};
 
     dynamic body = json.encode(data);
 

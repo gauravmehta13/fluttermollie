@@ -8,9 +8,9 @@ import 'package:mollie_flutter/src/molliepayment.dart';
 class PaymentHandler {
   final String _apiEndpoint = "https://api.mollie.com/v2/payments";
 
-  dynamic _headers;
+  Map<String, String>? _headers;
 
-  PaymentHandler(dynamic headers) {
+  PaymentHandler(Map<String, String>? headers) {
     _headers = headers;
   }
 

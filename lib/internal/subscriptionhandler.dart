@@ -8,9 +8,9 @@ import 'package:mollie_flutter/src/molliesubscription.dart';
 class SubscriptionHandler {
   final String _apiEndpoint = "https://api.mollie.com/v2/customers";
 
-  dynamic _headers;
+  Map<String, String>? _headers;
 
-  SubscriptionHandler(dynamic headers) {
+  SubscriptionHandler(Map<String, String>? headers) {
     _headers = headers;
   }
 

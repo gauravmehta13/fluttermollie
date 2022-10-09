@@ -5,13 +5,13 @@ import 'package:mollie_flutter/internal/paymenthandler.dart';
 import 'package:mollie_flutter/internal/subscriptionhandler.dart';
 
 class MollieClient {
-  var headers;
+  Map<String, String>? headers;
 
-  OrderHandler? orders;
-  CustomerHandler? customers;
-  SubscriptionHandler? subscription;
-  PaymentHandler? payments;
-  InvoiceHandler? invoiceHandler;
+  late OrderHandler orders;
+  late CustomerHandler customers;
+  late SubscriptionHandler subscription;
+  late PaymentHandler payments;
+  late InvoiceHandler invoiceHandler;
 
   static final MollieClient _instance = MollieClient._internal();
 
