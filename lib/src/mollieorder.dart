@@ -34,14 +34,14 @@ class MollieOrderRequest {
   dynamic toJson() {
     List<dynamic> productMaps = [];
 
-    for (MollieProductRequest p in products!) {
+    for (MollieProductRequest p in products ?? []) {
       productMaps.add(p.toMap());
     }
 
     return json.encode({
-      "amount": amount!.toMap(),
-      "billingAddress": billingAddress!.toMap(),
-      "shippingAddress": shippingAddress!.toMap(),
+      "amount": amount?.toMap(),
+      "billingAddress": billingAddress?.toMap(),
+      "shippingAddress": shippingAddress?.toMap(),
       //"metaData": metaData,
       "consumerDateOfBirth": consumerDateOfBirth,
       "locale": locale,

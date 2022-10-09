@@ -35,10 +35,10 @@ class MollieProductRequest {
       "imageUrl": imageUrl,
       "quantity": quantity,
       "vatRate": vatRate,
-      "unitPrice": unitPrice!.toMap(),
-      "totalAmount": totalAmount!.toMap(),
-      "discountAmount": discountAmount!.toMap(),
-      "vatAmount": vatAmount!.toMap(),
+      "unitPrice": unitPrice?.toMap(),
+      "totalAmount": totalAmount?.toMap(),
+      "discountAmount": discountAmount?.toMap(),
+      "vatAmount": vatAmount?.toMap(),
     };
   }
 }
