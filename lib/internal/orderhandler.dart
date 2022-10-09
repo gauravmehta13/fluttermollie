@@ -50,7 +50,7 @@ class OrderHandler {
   /// Retrieve a single order by its ID.
   Future<MollieOrderResponse?> get(String orderId) async {
     var res = await http.get(
-      Uri.parse(_apiEndpoint + "/" + orderId),
+      Uri.parse("$_apiEndpoint/$orderId"),
       headers: _headers,
     );
 
@@ -65,7 +65,7 @@ class OrderHandler {
   /// Cancels an order
   Future<MollieOrderResponse> cancel(String orderId) async {
     var res = await http.delete(
-      Uri.parse(_apiEndpoint + "/" + orderId),
+      Uri.parse("$_apiEndpoint/$orderId"),
       headers: _headers,
     );
 
@@ -79,7 +79,7 @@ class OrderHandler {
 
     dynamic body = json.encode(data);
 
-    var res = await http.patch(Uri.parse(_apiEndpoint + "/" + orderId), headers: _headers, body: body);
+    var res = await http.patch(Uri.parse("$_apiEndpoint/$orderId"), headers: _headers, body: body);
 
     return MollieOrderResponse.build(json.decode(res.body));
   }
@@ -88,7 +88,7 @@ class OrderHandler {
   Future<MollieOrderResponse> updateOrderLine(MollieOrderLine orderLine) async {
     var res = await http.patch(
         Uri.parse(
-          _apiEndpoint + "/" + orderLine.orderId! + "/lines/" + orderLine.orderLineId!,
+          "$_apiEndpoint/${orderLine.orderId!}/lines/${orderLine.orderLineId!}",
         ),
         headers: _headers,
         body: orderLine.toJson());

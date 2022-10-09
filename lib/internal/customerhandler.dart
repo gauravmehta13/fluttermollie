@@ -34,7 +34,7 @@ class CustomerHandler {
   /// Retrieve a single customer by its ID.
   Future<MollieCustomer?> get(String customerId) async {
     var res = await http.get(
-      Uri.parse(_apiEndpoint + "/" + customerId),
+      Uri.parse("$_apiEndpoint/$customerId"),
       headers: _headers,
     );
 
@@ -52,7 +52,7 @@ class CustomerHandler {
 
     dynamic body = json.encode(data);
 
-    var res = await http.patch(Uri.parse(_apiEndpoint + "/" + customerId), headers: _headers, body: body);
+    var res = await http.patch(Uri.parse("$_apiEndpoint/$customerId"), headers: _headers, body: body);
 
     if (res.statusCode == 200 || res.statusCode == 201) {
       dynamic data = json.decode(res.body);
@@ -65,11 +65,11 @@ class CustomerHandler {
   /// Delete a customer. All mandates and subscriptions created for this customer will be canceled as well.
   Future<String> delete(String customerId) async {
     await http.delete(
-      Uri.parse(_apiEndpoint + "/" + customerId),
+      Uri.parse("$_apiEndpoint/$customerId"),
       headers: _headers,
     );
 
-    return "Customer " + customerId + "was deleted successfully";
+    return "Customer ${customerId}was deleted successfully";
   }
 
   /// Retrieve all customers created.
@@ -80,8 +80,6 @@ class CustomerHandler {
       Uri.parse(_apiEndpoint),
       headers: _headers,
     );
-
-    print(res.body);
 
     dynamic data = json.decode(res.body);
 

@@ -26,8 +26,9 @@ class MollieCheckoutOptions extends StatefulWidget {
   final List<PaymentOptions> paymentOptions;
   final void Function(MollieOrderRequest)? onMethodSelected;
 
-  MollieCheckoutOptions(
-      {required this.order,
+  const MollieCheckoutOptions(
+      {super.key,
+      required this.order,
       this.style,
       this.onMethodSelected,
       this.paymentOptions = const [
@@ -42,7 +43,7 @@ class MollieCheckoutOptions extends StatefulWidget {
       ]});
 
   @override
-  _MollieCheckoutOptionsState createState() => _MollieCheckoutOptionsState();
+  State<MollieCheckoutOptions> createState() => _MollieCheckoutOptionsState();
 }
 
 class _MollieCheckoutOptionsState extends State<MollieCheckoutOptions> {
@@ -55,15 +56,14 @@ class _MollieCheckoutOptionsState extends State<MollieCheckoutOptions> {
   }
 
   void _buildPaymentMethods() {
-    style = widget.style == null
-        ? CheckoutStyle(
+    style = widget.style ??
+        CheckoutStyle(
             appBar: AppBar(
               backgroundColor: Colors.black,
-              title: Text("Checkout"),
+              title: const Text("Checkout"),
             ),
             buttonColor: Colors.black,
-            textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
-        : widget.style;
+            textStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold));
 
     for (int i = 0; i < widget.paymentOptions.length; i++) {
       PaymentOptions m = widget.paymentOptions[i];
@@ -89,7 +89,7 @@ class _MollieCheckoutOptionsState extends State<MollieCheckoutOptions> {
               borderRadius: BorderRadius.circular(10.0),
               side: BorderSide(color: Colors.grey[300]!),
             ),
-            trailing: Icon(
+            trailing: const Icon(
               Icons.arrow_forward_ios,
               size: 12,
               color: Colors.black,
@@ -106,10 +106,9 @@ class _MollieCheckoutOptionsState extends State<MollieCheckoutOptions> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
+    return Column(
       children: paymentMethods,
-    ));
+    );
 
     //if (widget.style != null && widget.style.appBar != null) {
     //  return Scaffold(

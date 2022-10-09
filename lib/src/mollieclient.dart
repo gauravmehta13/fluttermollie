@@ -23,7 +23,7 @@ class MollieClient {
   void init(String apiKey) {
     headers = {
       "Content-Type": "application/json",
-      "Authorization": "Bearer " + apiKey,
+      "Authorization": "Bearer $apiKey",
     };
 
     orders = OrderHandler(headers);

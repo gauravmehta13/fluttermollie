@@ -96,7 +96,7 @@ class MollieOrderResponse {
     webhookUrl = data["webhookUrl"];
 
     for (int i = 0; i < data["lines"].length; i++) {
-      products.add(new MollieProductResponse.build(data["lines"][i]));
+      products.add(MollieProductResponse.build(data["lines"][i]));
     }
 
     status = data["status"];

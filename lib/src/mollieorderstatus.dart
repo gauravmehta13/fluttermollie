@@ -8,9 +8,10 @@ class MollieOrderStatus extends StatefulWidget {
   final List<MollieOrderResponse> orders;
   final Function(MollieOrderResponse)? onSelectOrder;
 
-  MollieOrderStatus({required this.orders, this.onSelectOrder});
+  const MollieOrderStatus({super.key, required this.orders, this.onSelectOrder});
 
-  _MollieOrderStatusState createState() => _MollieOrderStatusState();
+  @override
+  State<MollieOrderStatus> createState() => _MollieOrderStatusState();
 }
 
 class _MollieOrderStatusState extends State<MollieOrderStatus> {
@@ -38,19 +39,15 @@ class _MollieOrderStatusState extends State<MollieOrderStatus> {
     for (int i = 0; i < orderStatus.length; i++) {
       container.add(Expanded(
         flex: 3,
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                child: Text(orderStatus[i]),
-              ),
-              Expanded(
-                  child: Container(
-                color: statusIndex >= i ? Colors.blue : Colors.grey,
-              ))
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(orderStatus[i]),
+            Expanded(
+                child: Container(
+              color: statusIndex >= i ? Colors.blue : Colors.grey,
+            ))
+          ],
         ),
       ));
     }
@@ -66,16 +63,15 @@ class _MollieOrderStatusState extends State<MollieOrderStatus> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("Orders"),
+        title: const Text("Orders"),
       ),
       body: ListView.builder(
           itemCount: widget.orders.length,
           itemBuilder: (context, index) {
             MollieOrderResponse o = widget.orders[index];
 
-            DateTime date =
-                new DateTime.fromMillisecondsSinceEpoch(DateTime.parse(o.createdAt!).millisecondsSinceEpoch);
-            var formatter = new DateFormat("dd.MM.yyyy");
+            DateTime date = DateTime.fromMillisecondsSinceEpoch(DateTime.parse(o.createdAt!).millisecondsSinceEpoch);
+            var formatter = DateFormat("dd.MM.yyyy");
             String formattedDate = formatter.format(date);
 
             int items = 0;
@@ -94,7 +90,10 @@ class _MollieOrderStatusState extends State<MollieOrderStatus> {
                   child: Container(
                       decoration: BoxDecoration(color: Colors.white, boxShadow: [
                         BoxShadow(
-                            color: Colors.black.withOpacity(0.2), blurRadius: 1, spreadRadius: 2, offset: Offset(1, 1))
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 1,
+                            spreadRadius: 2,
+                            offset: const Offset(1, 1))
                       ]),
                       width: MediaQuery.of(context).size.width,
                       height: 140,
@@ -110,7 +109,7 @@ class _MollieOrderStatusState extends State<MollieOrderStatus> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Text(
+                                          const Text(
                                             "Order No",
                                             style: TextStyle(fontWeight: FontWeight.bold),
                                           ),
@@ -122,7 +121,7 @@ class _MollieOrderStatusState extends State<MollieOrderStatus> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Text(
+                                          const Text(
                                             "Amount",
                                             style: TextStyle(fontWeight: FontWeight.bold),
                                           ),
@@ -134,7 +133,7 @@ class _MollieOrderStatusState extends State<MollieOrderStatus> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Text(
+                                          const Text(
                                             "Items",
                                             style: TextStyle(fontWeight: FontWeight.bold),
                                           ),
@@ -146,14 +145,14 @@ class _MollieOrderStatusState extends State<MollieOrderStatus> {
                           Container(
                             padding: const EdgeInsets.all(5),
                             alignment: Alignment.centerLeft,
-                            child: Text("Order placed on " + formattedDate),
+                            child: Text("Order placed on $formattedDate"),
                           ),
                           Container(
                             padding: const EdgeInsets.all(5),
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "Status: " + o.status!,
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              "Status: ${o.status!}",
+                              style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           Expanded(

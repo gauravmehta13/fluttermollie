@@ -183,50 +183,6 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     );
-
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    createOrder(o);
-                  },
-                  child: Text("Create order"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    listPayments();
-                  },
-                  child: Text("List payments"),
-                ),
-              ],
-            ),
-            if (payments != null)
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: payments.length,
-                  itemBuilder: (context, index) => ListTile(
-                    title: Text(payments[index].description),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("${payments[index].amount.currency}${payments[index].amount.value}"),
-                        Text("${payments[index].createdAt}"),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
   }
 
   void listPayments() async {

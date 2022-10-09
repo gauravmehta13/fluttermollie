@@ -21,10 +21,10 @@ export 'package:mollie_flutter/src/mollieproduct.dart';
 export 'package:mollie_flutter/src/mollieshipment.dart';
 export 'package:mollie_flutter/src/molliesubscription.dart';
 
-MollieClient client = new MollieClient();
+MollieClient client = MollieClient();
 
 class Mollie {
-  static const MethodChannel _channel = const MethodChannel('mollie');
+  static const MethodChannel _channel = MethodChannel('mollie');
 
   /// Opens the browser to process the payment. Returns after payment is done.
   static Future<void> startPayment(String checkoutUrl) async {

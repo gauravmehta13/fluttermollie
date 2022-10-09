@@ -22,8 +22,9 @@ class MollieCheckout extends StatefulWidget {
   final Widget? child;
   final Function(MollieOrderRequest)? onMethodSelected;
 
-  MollieCheckout(
-      {required this.order,
+  const MollieCheckout(
+      {super.key,
+      required this.order,
       this.style,
       this.child,
       this.onMethodSelected,
@@ -35,7 +36,7 @@ class MollieCheckout extends StatefulWidget {
       this.useSofort = false});
 
   @override
-  _MollieCheckoutState createState() => _MollieCheckoutState();
+  State<MollieCheckout> createState() => _MollieCheckoutState();
 }
 
 class _MollieCheckoutState extends State<MollieCheckout> {
@@ -87,15 +88,14 @@ class _MollieCheckoutState extends State<MollieCheckout> {
       }
     ];
 
-    style = widget.style == null
-        ? CheckoutStyle(
+    style = widget.style ??
+        CheckoutStyle(
             appBar: AppBar(
               backgroundColor: Colors.black,
-              title: Text("Checkout"),
+              title: const Text("Checkout"),
             ),
             buttonColor: Colors.black,
-            textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
-        : widget.style;
+            textStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold));
 
     for (int i = 0; i < paymentCodes.length; i++) {
       dynamic m = paymentCodes[i];
@@ -144,11 +144,11 @@ class _MollieCheckoutState extends State<MollieCheckout> {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(margin: const EdgeInsets.only(bottom: 40, top: 40), child: Text("Select a payment method.")),
               Container(
-                  child: Column(
+                  margin: const EdgeInsets.only(bottom: 40, top: 40), child: const Text("Select a payment method.")),
+              Column(
                 children: paymentMethods,
-              )),
+              ),
               if (widget.child != null) widget.child!
             ],
           ),
