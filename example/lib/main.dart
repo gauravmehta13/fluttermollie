@@ -4,8 +4,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:mollie_flutter/mollie.dart';
 
-void main() => runApp(
-    MaterialApp(initialRoute: "home", routes: {"home": (context) => MyApp(), "done": (context) => ShowOrderStatus()}));
+void main() => runApp(MaterialApp(initialRoute: "home", routes: {
+      "home": (context) => MyApp(),
+      "done": (context) => ShowOrderStatus()
+    }));
 
 class MyApp extends StatefulWidget {
   @override
@@ -60,7 +62,8 @@ class _MyAppState extends State<MyApp> {
           sku: '5702016116977',
           name: 'LEGO 42083 Bugatti Chiron',
           productUrl: 'https://shop.lego.com/nl-NL/Bugatti-Chiron-42083',
-          imageUrl: 'https://sh-s7-live-s.legocdn.com/is/image//LEGO/42083_alt1?',
+          imageUrl:
+              'https://sh-s7-live-s.legocdn.com/is/image//LEGO/42083_alt1?',
           quantity: 2,
           vatRate: '21.00',
           unitPrice: MollieAmount(
@@ -85,7 +88,8 @@ class _MyAppState extends State<MyApp> {
           sku: '5702016116977',
           name: 'LEGO 42083 Bugatti Chiron',
           productUrl: 'https://shop.lego.com/nl-NL/Bugatti-Chiron-42083',
-          imageUrl: 'https://sh-s7-live-s.legocdn.com/is/image//LEGO/42083_alt1?',
+          imageUrl:
+              'https://sh-s7-live-s.legocdn.com/is/image//LEGO/42083_alt1?',
           quantity: 2,
           vatRate: '21.00',
           unitPrice: MollieAmount(
@@ -197,8 +201,9 @@ class ShowOrderStatus extends StatelessWidget {
     return MollieOrderStatus(
       orders: [Mollie.getCurrentOrder()],
       onSelectOrder: (order) {
-        print(order.amount.currency);
-        print(order.status);
+        client.orders.get(order.id).then((value) {
+          log(value.status);
+        });
       },
     );
   }
