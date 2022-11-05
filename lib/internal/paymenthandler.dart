@@ -17,12 +17,15 @@ class PaymentHandler {
   /// Payment creation is elemental to the Mollie API: this is where most payment implementations start off.
   /// Once you have created a payment, you should redirect your customer to the URL in the _links.checkout property from the response.
   /// To wrap your head around the payment process, an explanation and flow charts can be found in the Payments API Overview.
-  Future<MolliePaymentResponse> create(MolliePaymentRequest payment, String customerId) async {
+  Future<MolliePaymentResponse> create(MolliePaymentRequest payment) async {
     var res = await http.post(Uri.parse(_apiEndpoint), headers: _headers, body: payment.toJson());
 
-    dynamic data = json.decode(res.body);
-
-    return MolliePaymentResponse.build(data);
+    if (res.statusCode == 200 || res.statusCode == 201) {
+      dynamic data = json.decode(res.body);
+      return MolliePaymentResponse.build(data);
+    } else {
+      throw Exception("Error getting payment ${res.statusCode} ${res.body}");
+    }
   }
 
   /// Retrieve a single payment object by its payment token.
@@ -32,9 +35,12 @@ class PaymentHandler {
       headers: _headers,
     );
 
-    dynamic data = json.decode(res.body);
-
-    return MolliePaymentResponse.build(data);
+    if (res.statusCode == 200 || res.statusCode == 201) {
+      dynamic data = json.decode(res.body);
+      return MolliePaymentResponse.build(data);
+    } else {
+      throw Exception("Error getting payment ${res.statusCode} ${res.body}");
+    }
   }
 
   /// Some payment methods are cancellable for an amount of time, usually until the next day. Or as long as the payment status is open.

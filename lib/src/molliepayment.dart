@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:mollie_flutter/src/mollieamount.dart';
 import 'package:mollie_flutter/src/molliedetails.dart';
@@ -8,9 +9,10 @@ class MolliePaymentRequest {
   String? description;
   String? webhookUrl;
   String? redirectUrl;
+  String? method;
   dynamic metaData;
 
-  MolliePaymentRequest({this.amount, this.redirectUrl, this.description, this.webhookUrl, this.metaData});
+  MolliePaymentRequest({this.amount, this.redirectUrl, this.description, this.webhookUrl, this.method, this.metaData});
 
   String toJson() {
     return json.encode({
@@ -19,6 +21,7 @@ class MolliePaymentRequest {
       "metadata": json.encode(metaData),
       "description": description,
       "webhookUrl": webhookUrl,
+      "method": method
     });
   }
 }
@@ -44,6 +47,7 @@ class MolliePaymentResponse {
   String? selfUrl;
 
   MolliePaymentResponse.build(dynamic data) {
+    log(data.toString());
     id = data["id"];
     mode = data["mode"];
     isCancelable = data["isCancelable"];

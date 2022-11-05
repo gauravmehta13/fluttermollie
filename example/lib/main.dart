@@ -2,12 +2,11 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'package:mollie_flutter/mollie.dart';
 
-void main() => runApp(MaterialApp(initialRoute: "home", routes: {
-      "home": (context) => MyApp(),
-      "done": (context) => ShowOrderStatus()
-    }));
+void main() => runApp(
+    MaterialApp(initialRoute: "home", routes: {"home": (context) => MyApp(), "done": (context) => ShowOrderStatus()}));
 
 class MyApp extends StatefulWidget {
   @override
@@ -62,8 +61,7 @@ class _MyAppState extends State<MyApp> {
           sku: '5702016116977',
           name: 'LEGO 42083 Bugatti Chiron',
           productUrl: 'https://shop.lego.com/nl-NL/Bugatti-Chiron-42083',
-          imageUrl:
-              'https://sh-s7-live-s.legocdn.com/is/image//LEGO/42083_alt1?',
+          imageUrl: 'https://sh-s7-live-s.legocdn.com/is/image//LEGO/42083_alt1?',
           quantity: 2,
           vatRate: '21.00',
           unitPrice: MollieAmount(
@@ -88,8 +86,7 @@ class _MyAppState extends State<MyApp> {
           sku: '5702016116977',
           name: 'LEGO 42083 Bugatti Chiron',
           productUrl: 'https://shop.lego.com/nl-NL/Bugatti-Chiron-42083',
-          imageUrl:
-              'https://sh-s7-live-s.legocdn.com/is/image//LEGO/42083_alt1?',
+          imageUrl: 'https://sh-s7-live-s.legocdn.com/is/image//LEGO/42083_alt1?',
           quantity: 2,
           vatRate: '21.00',
           unitPrice: MollieAmount(
@@ -111,7 +108,7 @@ class _MyAppState extends State<MyApp> {
         )
       ]);
 
-  Future<void> createOrder(MollieOrderRequest order) async {
+  Future<void> createOrder(String method) async {
     //Test
     MollieSubscriptionRequest s = new MollieSubscriptionRequest(
       amount: MollieAmount(
@@ -129,10 +126,13 @@ class _MyAppState extends State<MyApp> {
         currency: 'EUR',
         value: '30.00',
       ),
+      method: method,
       description: 'My first payment',
       redirectUrl: 'https://webshop.example.org/order/12345/',
       webhookUrl: 'https://webshop.example.org/payments/webhook/',
     );
+
+    MolliePaymentResponse p = await client.payments.create(r);
 
     // client-server example
     // var orderResponse = await http.post(
@@ -158,10 +158,17 @@ class _MyAppState extends State<MyApp> {
 
     client.init("test_HbkjP7PuCPwdveGWG2UffGTdkmd8re");
 
-    var createdOrder = await client.orders.create(order);
-    log(createdOrder.checkoutUrl);
-    Mollie.setCurrentOrder(createdOrder);
-    Mollie.startPayment(createdOrder.checkoutUrl);
+    final result = await FlutterWebAuth2.authenticate(url: p.checkoutUrl, callbackUrlScheme: 'molli');
+    log(result);
+
+    MolliePaymentResponse paymentResp = await client.payments.get(p.id);
+
+    if (paymentResp?.status == "paid") {}
+
+    // var createdOrder = await client.orders.create(order);
+    // log(createdOrder.checkoutUrl);
+    // Mollie.setCurrentOrder(createdOrder);
+    //Mollie.startPayment(p.checkoutUrl);
   }
 
   @override
@@ -169,7 +176,7 @@ class _MyAppState extends State<MyApp> {
     return MollieCheckout(
       order: o,
       onMethodSelected: (order) {
-        createOrder(order);
+        //  createOrder(order);
       },
       useCredit: true,
       usePaypal: true,
@@ -178,12 +185,11 @@ class _MyAppState extends State<MyApp> {
       useSepa: true,
       useIdeal: true,
       child: MollieCheckoutOptions(
-        order: o,
         style: CheckoutStyle(
           buttonColor: Colors.white,
         ),
-        onMethodSelected: (order) {
-          createOrder(order);
+        onMethodSelected: (method) {
+          createOrder(method);
         },
       ),
     );

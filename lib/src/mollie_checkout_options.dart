@@ -15,20 +15,18 @@ enum PaymentOptions {
 
   final String? name;
   final String? icon;
-  final String? method;
+  final String method;
 
-  const PaymentOptions({this.name, this.icon, this.method});
+  const PaymentOptions({this.name, this.icon, required this.method});
 }
 
 class MollieCheckoutOptions extends StatefulWidget {
   final CheckoutStyle? style;
-  final MollieOrderRequest order;
   final List<PaymentOptions> paymentOptions;
-  final void Function(MollieOrderRequest)? onMethodSelected;
+  final void Function(String)? onMethodSelected;
 
   const MollieCheckoutOptions(
       {super.key,
-      required this.order,
       this.style,
       this.onMethodSelected,
       this.paymentOptions = const [
@@ -50,9 +48,8 @@ class _MollieCheckoutOptionsState extends State<MollieCheckoutOptions> {
   List<Widget> paymentMethods = [];
   CheckoutStyle? style;
 
-  void _setMethod(String? method) {
-    widget.order.method = method;
-    widget.onMethodSelected?.call(widget.order);
+  void _setMethod(String method) {
+    widget.onMethodSelected?.call(method);
   }
 
   void _buildPaymentMethods() {
