@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mollie_flutter/mollie.dart';
 
 enum PaymentOptions {
+  ideal(name: "iDEAL", icon: "assets/icons/ideal.png", method: "ideal"),
   paypal(name: "PayPal", icon: "assets/icons/paypal.png", method: "paypal"),
   creditcard(name: "Credit Card", icon: "assets/icons/credit_card.png", method: "creditcard"),
   giropay(name: "Giropay", icon: "assets/icons/giropay.png", method: "giropay"),
-  ideal(name: "iDEAL", icon: "assets/icons/ideal.png", method: "ideal"),
   bancontact(name: "Bancontact", icon: "assets/icons/bancontact.png", method: "bancontact"),
   kbc(name: "KBC", icon: "assets/icons/kbc.png", method: "kbc"),
   belfius(name: "Belfius", icon: "assets/icons/belfius_pay.png", method: "belfius"),
@@ -30,10 +30,10 @@ class MollieCheckoutOptions extends StatefulWidget {
       this.style,
       this.onMethodSelected,
       this.paymentOptions = const [
+        PaymentOptions.ideal,
         PaymentOptions.paypal,
         PaymentOptions.creditcard,
         PaymentOptions.giropay,
-        PaymentOptions.ideal,
         PaymentOptions.bancontact,
         PaymentOptions.kbc,
         PaymentOptions.belfius,
