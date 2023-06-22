@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<MolliePaymentResponse> payments;
+  late List<MolliePaymentResponse> payments;
 
   @override
   void initState() {
@@ -158,12 +158,12 @@ class _MyAppState extends State<MyApp> {
 
     client.init("test_HbkjP7PuCPwdveGWG2UffGTdkmd8re");
 
-    final result = await FlutterWebAuth2.authenticate(url: p.checkoutUrl, callbackUrlScheme: 'molli');
+    final result = await FlutterWebAuth2.authenticate(url: p.checkoutUrl??"", callbackUrlScheme: 'molli');
     log(result);
 
-    MolliePaymentResponse paymentResp = await client.payments.get(p.id);
+    MolliePaymentResponse paymentResp = await client.payments.get(p.id??"");
 
-    if (paymentResp?.status == "paid") {}
+    if (paymentResp.status == "paid") {}
 
     // var createdOrder = await client.orders.create(order);
     // log(createdOrder.checkoutUrl);
@@ -205,10 +205,10 @@ class ShowOrderStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MollieOrderStatus(
-      orders: [Mollie.getCurrentOrder()],
+      orders: [Mollie.getCurrentOrder()!],
       onSelectOrder: (order) {
-        client.orders.get(order.id).then((value) {
-          log(value.status);
+        client.orders.get(order.id??"").then((value) {
+          log(value?.status??"");
         });
       },
     );
