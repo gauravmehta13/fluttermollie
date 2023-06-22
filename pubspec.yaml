@@ -6,6 +6,7 @@ repository: https://github.com/gauravmehta13/mollie_flutter
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=1.12.0"
 
 dependencies:
   flutter:
