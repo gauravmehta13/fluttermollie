@@ -1,5 +1,5 @@
-## 1.1.5
-* Updated D
+## 1.1.6
+* Updated Plugins
 ## 1.1.3
 * Mollie Payments
 ## 1.1.3
