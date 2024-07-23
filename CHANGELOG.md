@@ -1,3 +1,5 @@
+## 1.1.7
+* Updated Plugins
 ## 1.1.6
 * Updated Plugins
 ## 1.1.3
